@@ -3,6 +3,7 @@
 #
 
 shelljs = require "shelljs"
+_ = require "lodash"
 
 module.exports = (robot) ->
 
@@ -13,9 +14,10 @@ module.exports = (robot) ->
   robot.respond /upgrade to new version/i, (res) ->
     res.reply "Ok, Waiting for moment ......"
     shelljs.exec "git pull --reb", (code, stdout, stderr) ->
+      res.reply code
       res.reply stdout
 
-      if stderr
+      if !_.isEmpty stderr
         res.reply "Errors: " + stderr
         res.reply "Sorry, upgrade looks like failed."
       else
