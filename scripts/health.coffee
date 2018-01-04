@@ -15,7 +15,7 @@ module.exports = (robot) ->
     shelljs.exec "git pull --reb", (code, stdout, stderr) ->
       res.reply stdout
 
-      if stderr?
+      if stderr
         res.reply "Errors: " + stderr
         res.reply "Sorry, upgrade looks like failed."
       else
