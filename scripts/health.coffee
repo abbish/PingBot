@@ -1,11 +1,21 @@
 # Description:
 #   This command is for checking Pingping's health.
 #
+
+shelljs = require "shelljs"
+
 module.exports = (robot) ->
 
-  robot.hear /hello/i, (res) ->
-    res.send "Hello My master, What can i help you ?"
-  
+  robot.respond /hello/i, (res) ->
+    res.reply "Hello my master."
+    res.reply "What can i help you ?"
+
+  robot.respond /update yourself/i, (res) ->
+    res.reply "Ok, Waiting for moment ......"
+    res.reply shelljs.pwd()
+    res.reply "Updated to new version."
+
+
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
   #   if doorType is "pod bay"
