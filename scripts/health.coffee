@@ -23,7 +23,8 @@ module.exports = (robot) ->
           res.reply stdout
           res.reply "Already updated to new version."
 
-
+  robot.hear /可以骂街么？/i, (res) ->
+    res.reply "骂街的不行。"
 
 
 
