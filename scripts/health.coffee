@@ -10,10 +10,22 @@ module.exports = (robot) ->
     res.reply "Hello my master."
     res.reply "What can i help you ?"
 
-  robot.respond /update yourself/i, (res) ->
+  robot.respond /upgrade to new version/i, (res) ->
     res.reply "Ok, Waiting for moment ......"
-    res.reply shelljs.pwd()
-    res.reply "Updated to new version."
+    shelljs.exec "git pull --reb", (code, stdout, stderr) ->
+      res.reply stdout
+
+      if stderr?
+        res.reply stderr
+        res.reply "Sorry, upgrade looks like failed."
+      else
+        shelljs.exec "pm2 restart PingBot", (code, stdout, stderr) ->
+          res.reply stdout
+          res.reply "Already updated to new version."
+
+
+
+
 
 
   # robot.respond /open the (.*) doors/i, (res) ->
