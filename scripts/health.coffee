@@ -17,7 +17,7 @@ module.exports = (robot) ->
       res.reply code
       res.reply stdout
 
-      if !_.isEmpty stderr
+      if code != 0
         res.reply "Errors: " + stderr
         res.reply "Sorry, upgrade looks like failed."
       else
