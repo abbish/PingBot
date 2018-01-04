@@ -28,6 +28,9 @@ module.exports = (robot) ->
   robot.hear /有人在吗？/i, (res) ->
     res.reply "有啊。"
 
+  robot.hear /今天/i, (res) ->
+    res.reply new Date()
+
 
 
 
