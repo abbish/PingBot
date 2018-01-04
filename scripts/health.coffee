@@ -14,10 +14,9 @@ module.exports = (robot) ->
   robot.respond /upgrade to new version/i, (res) ->
     res.reply "Ok, Waiting for moment ......"
     shelljs.exec "git pull --reb && pm2 restart PingBot", (code, stdout, stderr) ->
-      res.reply stdout
+      res.reply stdout || stderr
 
       if code != 0
-        res.reply "Errors: " + stderr
         res.reply "Sorry, upgrade looks like failed."
       else
         res.reply "Already updated to new version."
