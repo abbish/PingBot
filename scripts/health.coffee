@@ -21,6 +21,8 @@ module.exports = (robot) ->
         res.reply "Errors: " + stderr
         res.reply "Sorry, upgrade looks like failed."
       else
+        res.reply "Restarting myself ......"
+
         shelljs.exec "pm2 restart PingBot", (code, stdout, stderr) ->
           res.reply stdout
           res.reply "Already updated to new version."
