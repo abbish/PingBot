@@ -23,9 +23,10 @@ module.exports = (robot) ->
       else
         res.reply "Restarting myself ......"
 
-        shelljs.exec "pm2 restart PingBot", (code, stdout, stderr) ->
-          res.reply stdout
-          res.reply "Already updated to new version."
+
+    shelljs.exec "pm2 restart PingBot", (code, stdout, stderr) ->
+      res.reply stdout
+      res.reply "Already updated to new version."
 
   robot.hear /有人在吗？/i, (res) ->
     res.reply "有啊。"
