@@ -11,7 +11,7 @@ module.exports = (robot) ->
     res.reply "Hello my master."
     res.reply "What can i help you ?"
 
-  robot.respond /upgrade to new version/i, (res) ->
+  robot.respond /upgrade/i, (res) ->
     res.reply "Ok, Waiting for moment ......"
     shelljs.exec "git pull --reb && pm2 restart PingBot", (code, stdout, stderr) ->
       res.reply stdout || stderr
@@ -21,6 +21,9 @@ module.exports = (robot) ->
       else
         res.reply "Already updated to new version."
 
+  robot.respond /restart/i, (res) ->
+    res.reply "Done."
+    shelljs.exec "pm2 restart PingBot"
 
   robot.hear /有人在吗？/i, (res) ->
     res.reply "有啊。"
