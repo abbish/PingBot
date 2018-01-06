@@ -8,21 +8,20 @@ _ = require "lodash"
 module.exports = (robot) ->
 
   robot.respond /你好/i, (res) ->
-    res.reply "Hello my master."
-    res.reply "What can i help you ?"
+    res.reply "主人好！"
+    res.reply "您需要什么帮助 ?"
 
   robot.respond /升级/i, (res) ->
-    res.reply "Ok, Waiting for moment ......"
+    res.reply "好的，请稍后 ..."
     shelljs.exec "git pull --reb", (code, stdout, stderr) ->
       res.reply stdout || stderr
 
       if code != 0
-        res.reply "Sorry, upgrade looks like failed."
+        res.reply "升级失败。"
       else
-        res.reply "Already updated to new version."
+        res.reply "升级完成。"
 
   robot.respond /重启/i, (res) ->
-    res.reply "Done."
     shelljs.exec "pm2 restart PingBot"
 
   robot.respond /命令 (.*)/i, (res) ->
