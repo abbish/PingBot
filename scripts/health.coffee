@@ -7,11 +7,11 @@ _ = require "lodash"
 
 module.exports = (robot) ->
 
-  robot.respond /hello/i, (res) ->
+  robot.respond /你好/i, (res) ->
     res.reply "Hello my master."
     res.reply "What can i help you ?"
 
-  robot.respond /upgrade/i, (res) ->
+  robot.respond /升级/i, (res) ->
     res.reply "Ok, Waiting for moment ......"
     shelljs.exec "git pull --reb", (code, stdout, stderr) ->
       res.reply stdout || stderr
@@ -21,11 +21,11 @@ module.exports = (robot) ->
       else
         res.reply "Already updated to new version."
 
-  robot.respond /restart/i, (res) ->
+  robot.respond /重启/i, (res) ->
     res.reply "Done."
     shelljs.exec "pm2 restart PingBot"
 
-  robot.respond /version/i, (res) ->
+  robot.respond /当前版本/i, (res) ->
     shelljs.exec "git log -1", (code, stdout, stderr) ->
       res.reply stdout
 
