@@ -25,6 +25,10 @@ module.exports = (robot) ->
     res.reply "Done."
     shelljs.exec "pm2 restart PingBot"
 
+  robot.respond /version/i, (res) ->
+    shelljs.exec "git log -1", (code, stdout, stderr) ->
+      res.reply stdout
+
   robot.hear /有人在吗？/i, (res) ->
     res.reply "有啊。"
 
