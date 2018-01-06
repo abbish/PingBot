@@ -35,6 +35,8 @@ module.exports = (robot) ->
   robot.hear /今天/i, (res) ->
     res.reply new Date()
 
+  robot.hear /明天/i, (res) ->
+    res.reply "有雨"
 
 
 
