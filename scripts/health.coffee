@@ -20,8 +20,6 @@ module.exports = (robot) ->
         res.reply "Sorry, upgrade looks like failed."
       else
         res.reply "Already updated to new version."
-        restart = () -> shelljs.exec "pm2 restart PingBot"
-        setTimeout restart, 500
 
   robot.respond /restart/i, (res) ->
     res.reply "Done."
