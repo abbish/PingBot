@@ -31,6 +31,9 @@ module.exports = (robot) ->
   robot.hear /今天/i, (res) ->
     res.reply new Date()
 
+  robot.hear /你多大/i, (res) ->
+    res.reply 18
+
 
 
 
